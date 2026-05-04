@@ -66,9 +66,9 @@ export const BOOKING_MONTHS = [
 export const BOOKING_GROUPS = [
   { label: 'Solo', subGroups: null },
   { label: 'Couple', subGroups: null },
-  { label: 'Family', subGroups: ['Family (3–4)', 'Family (5–7)', 'Extended Family (8+)'] },
+  { label: 'Family', subGroups: ["Family (4 members)", "Family (6 members)", "Family (8+ members)"], },
   {
     label: 'Group',
-    subGroups: ['Small Group (3–10)', 'Medium Group (11–20)', 'Large Group (21–50)', 'Corporate Group (50+)'],
+    subGroups: ["Group (10 people)", "Group (15 people)", "Group (20 people)", "Group (20+ people)"],
   },
 ];
