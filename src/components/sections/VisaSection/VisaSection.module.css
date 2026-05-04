@@ -1,0 +1,176 @@
+.section {
+  background: var(--cream-dark);
+  color: var(--charcoal);
+  padding: var(--section-pad);
+}
+
+/* ── Header ─────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+/* ── About text ──────────────────────────────────────── */
+.aboutContent {
+  max-width: 850px;
+  margin-bottom: 64px;
+  line-height: 1.8;
+}
+
+.aboutContent p {
+  font-size: 15px;
+  color: var(--charcoal);
+  margin-bottom: 16px;
+  letter-spacing: 0.3px;
+}
+
+/* ── Team grid ────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+/* ── Card ────────────────────────────────────────────── */
+.card {
+  background: var(--warm-white);
+  border: 1px solid rgba(184, 134, 11, 0.2);
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  box-shadow: 0 2px 14px rgba(58, 44, 30, 0.07);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(184, 134, 11, 0.5);
+  box-shadow: 0 16px 36px rgba(184, 134, 11, 0.18);
+}
+
+.card:hover::after {
+  transform: scaleX(1);
+}
+
+/* ── Photo wrapper ───────────────────────────────────── */
+/*
+  Square crop so every promoter photo looks consistent.
+  object-fit: cover fills the frame from the centre,
+  showing the face even if the photo is portrait or landscape.
+*/
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;   /* square — safe to change to 3/4 for portrait if you prefer */
+  overflow: hidden;
+}
+
+.flagImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;   /* bias toward the face / top of frame */
+  display: block;
+  transition: transform 0.45s ease;
+  filter: brightness(0.95) saturate(1.05);
+}
+
+.card:hover .flagImg {
+  transform: scale(1.05);
+  filter: brightness(1) saturate(1.1);
+}
+
+/* Soft gradient at the bottom of the photo */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 55%,
+    rgba(30, 20, 10, 0.32) 100%
+  );
+  pointer-events: none;
+}
+
+/* ── Card text body ──────────────────────────────────── */
+/*
+  NO margin-top here — the image wrapper handles its own height
+  via aspect-ratio. The body simply stacks below it.
+*/
+.cardBody {
+  padding: 18px 16px 22px;
+  text-align: center;
+  flex: 1;                  /* fills remaining height so cards align at the bottom */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.name {
+  font-size: 11px;
+  letter-spacing: 1.1px;
+  color: var(--charcoal);
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+.divider {
+  width: 28px;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+
+.card:hover .divider {
+  width: 48px;
+}
+
+.type {
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ── Responsive ──────────────────────────────────────── */
+@media (max-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 380px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

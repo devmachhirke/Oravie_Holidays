@@ -1,0 +1,32 @@
+/* ─── Design Tokens ────────────────────────────────── */
+:root {
+  /* Gold palette */
+  --gold:        #B8860B;
+  --gold-light:  #D4A843;
+  --gold-pale:   #F7EDD0;
+  --gold-dark:   #8B6914;
+  --gold-border: #C9A84C;
+
+  /* Neutrals */
+  --cream:       #F9F5EE;
+  --cream-dark:  #F0E8D5;
+  --cream-mid:   #EFE7D4;
+  --warm-white:  #FDFAF4;
+  --dark-warm:   #2A2118;
+  --charcoal:    #3D3020;
+  --text-muted:  #8A7560;
+  --text-light:  #B0A090;
+  --taupe:       #5C4E3A;
+  --white:       #FFFFFF;
+  --black:       #000000;
+  --navy:        #3A2C1E;
+  --navy-mid:    #4A3825;
+
+  /* Typography */
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-sans:  'Josefin Sans', sans-serif;
+
+  /* Spacing */
+  --section-pad: 100px 5%;
+  --nav-height:  80px;
+}
