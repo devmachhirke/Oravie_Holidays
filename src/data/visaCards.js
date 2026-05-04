@@ -22,7 +22,7 @@ export const VISA_CARDS = [
   {
     id: 'sk',
     image: 'https://69f1dcc61c78705e2c4ae10e.imgix.net/imagepath/WhatsApp%20Image%202026-05-04%20at%204.24.49%20PM%20(1).jpeg?w=834&h=834',         // ← replace with Shruti's photo URL
-    name: 'Shruti Kosre',
+    name: 'Shruti Kosare',
     type: 'Head of Sales',
   },
   {

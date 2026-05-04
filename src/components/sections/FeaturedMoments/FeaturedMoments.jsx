@@ -172,16 +172,29 @@ function BookingWidget() {
 
         {/* Group */}
         <select
-          name="groupType"
-          className={styles.select}
-          value={formData.groupType}
-          onChange={handleChange}
-        >
-          <option value="">Group Type</option>
-          {BOOKING_GROUPS.map(g => (
-            <option key={g} value={g}>{g}</option>
-          ))}
-        </select>
+  name="groupType"
+  className={styles.select}
+  value={formData.groupType}
+  onChange={handleChange}
+>
+  <option value="">Group Type</option>
+
+  {BOOKING_GROUPS.map(g =>
+    g.subGroups ? (
+      <optgroup key={g.label} label={g.label}>
+        {g.subGroups.map(sub => (
+          <option key={sub} value={sub}>
+            {sub}
+          </option>
+        ))}
+      </optgroup>
+    ) : (
+      <option key={g.label} value={g.label}>
+        {g.label}
+      </option>
+    )
+  )}
+</select>
 
         {/* Name */}
         <div>

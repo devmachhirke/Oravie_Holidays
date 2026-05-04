@@ -63,4 +63,12 @@ export const BOOKING_MONTHS = [
   'July','August','September','October','November','December',
 ];
 
-export const BOOKING_GROUPS = ['Solo', 'Couple', 'Family', 'Group'];
+export const BOOKING_GROUPS = [
+  { label: 'Solo', subGroups: null },
+  { label: 'Couple', subGroups: null },
+  { label: 'Family', subGroups: ['Family (3–4)', 'Family (5–7)', 'Extended Family (8+)'] },
+  {
+    label: 'Group',
+    subGroups: ['Small Group (3–10)', 'Medium Group (11–20)', 'Large Group (21–50)', 'Corporate Group (50+)'],
+  },
+];
