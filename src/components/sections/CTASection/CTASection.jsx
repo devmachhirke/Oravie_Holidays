@@ -22,7 +22,13 @@ export function CTASection() {
       </div>
       <div className={styles.actions}>
         <Button variant="dark" href="tel:+919322178463">Call Us Now</Button>
-        <Button variant="ghost" href="mailto:hello@travensotravel.com">Send Message</Button>
+        <Button 
+  variant="ghost" 
+  href="https://wa.me/9322178463" 
+  target="_blank"
+>
+  Send Message
+</Button>
       </div>
     </div>
   );

@@ -24,10 +24,10 @@ const SERVICES = [
 ];
 
 const SOCIALS = [
-  { label: 'f',  href: 'https://www.facebook.com/travensotravel' },
+  // { label: 'f',  href: 'https://www.facebook.com/travensotravel' },
   { label: 'in', href: 'https://www.instagram.com/oravieholidays?igsh=bmE2bndqYXpxMDRh' },
-  { label: 'li', href: 'https://www.linkedin.com/company/travenso-travel' },
-  { label: 'wa', href: 'https://wa.me/919156651919' },
+  // { label: 'li', href: 'https://www.linkedin.com/company/travenso-travel' },
+  { label: 'wa', href: 'https://wa.me/9322178463' },
 ];
 
 export function Footer() {
