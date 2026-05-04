@@ -15,13 +15,13 @@ export const VISA_CARDS = [
   },
   {
     id: 'ip',
-    image: 'https://69f1dcc61c78705e2c4ae10e.imgix.net/WhatsApp%20Image%202026-05-03%20at%207.26.56%20PM.jpeg?w=320',  // Indrajit's photo
+    image: 'https://69f1dcc61c78705e2c4ae10e.imgix.net/imagepath/WhatsApp%20Image%202026-05-04%20at%204.24.49%20PM.jpeg?w=882&h=882',  // Indrajit's photo
     name: 'Indrajit Pramanik',
     type: 'Operational Head',
   },
   {
     id: 'sk',
-    image: 'https://69f1dcc61c78705e2c4ae10e.imgix.net/image/WhatsApp%20Image%202026-05-04%20at%203.59.24%20PM.jpeg?w=768&h=1289',         // ← replace with Shruti's photo URL
+    image: 'https://69f1dcc61c78705e2c4ae10e.imgix.net/imagepath/WhatsApp%20Image%202026-05-04%20at%204.24.49%20PM%20(1).jpeg?w=834&h=834',         // ← replace with Shruti's photo URL
     name: 'Shruti Kosre',
     type: 'Head of Sales',
   },
