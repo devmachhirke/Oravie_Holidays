@@ -1,71 +1,110 @@
-/**
- * @file Testimonials.jsx
- * @description Horizontally-sliding testimonial cards with prev/next navigation.
- *              Visibility count is responsive (1 / 2 / 3 cards visible).
- */
+import React, { useEffect, useState } from "react";
+import "./Testimonials.css";
 
-import React from 'react';
-import { TESTIMONIALS } from '../../../data/testimonials';
-import { SectionBadge } from '../../common/SectionBadge';
-import { useSlider } from '../../../hooks/useSlider';
-import styles from './Testimonials.module.css';
+const TESTIMONIALS = [
+  {
+    initials: "VM",
+    name: "Vrushab Mukhad",
+    location: "Nagpur, Maharashtra",
+    quote:
+      "They crafted an epic, budget-friendly adventure for us. The trip of a lifetime without breaking the bank!",
+    stars: 5,
+  },
+  {
+    initials: "KJ",
+    name: "Karan Junghare",
+    location: "Nagpur, Maharashtra",
+    quote:
+      "Incredibly fast booking combined with warm, personal care. They offer exactly what modern travel is missing.",
+    stars: 5,
+  },
+  {
+    initials: "AD",
+    name: "Adarsh Bhadange",
+    location: "Nagpur, Maharashtra",
+    quote:
+      "Flawless planning from start to finish. Oravie Holidays truly delivered the gold standard of travel!",
+    stars: 5,
+  },
+  {
+    initials: "PR",
+    name: "Priya Rathod",
+    location: "Mumbai, Maharashtra",
+    quote:
+      "Every detail was perfectly curated. Our honeymoon felt like a dream — completely stress-free from start to finish.",
+    stars: 5,
+  },
+  {
+    initials: "SK",
+    name: "Siddharth Kulkarni",
+    location: "Pune, Maharashtra",
+    quote:
+      "Responsive, thoughtful, and genuinely passionate about travel. I will never book with anyone else again.",
+    stars: 5,
+  },
+];
 
-function getVisible() {
-  if (typeof window === 'undefined') return 3;
-  if (window.innerWidth < 600) return 1;
-  if (window.innerWidth < 900) return 2;
-  return 3;
-}
+export default function Testimonials() {
+  const [current, setCurrent] = useState(0);
 
-export function Testimonials() {
-  const [vis, setVis] = React.useState(getVisible);
-  const max = TESTIMONIALS.length - vis;
-  const { current: idx, next, prev } = useSlider(max + 1);
+  const next = () => {
+    setCurrent((prev) => (prev + 1) % TESTIMONIALS.length);
+  };
 
-  React.useEffect(() => {
-    const handler = () => setVis(getVisible());
-    window.addEventListener('resize', handler);
-    return () => window.removeEventListener('resize', handler);
-  }, []);
-
-  const safeIdx = Math.min(idx, max);
-  const offset = safeIdx * (100 / vis);
+  const prev = () => {
+    setCurrent((prev) =>
+      prev === 0 ? TESTIMONIALS.length - 1 : prev - 1
+    );
+  };
 
   return (
-    <section className={styles.section} id="testimonials">
-      <div className={styles.header}>
+    <section className="section">
+      <div className="header">
         <div>
-          <SectionBadge style={{ color: 'var(--gold-light)' }}>Traveler Stories</SectionBadge>
+          <div className="badge">Traveler Stories</div>
           <h2 className="section-title">
-            What Our<br /><em style={{ color: 'var(--gold-light)' }}>Travelers Say</em>
+            What Our <br /> <em>Travelers Say</em>
           </h2>
           <p className="section-sub">
-            Real experiences from happy clients who've trusted ORAVIE Holidays for
-            stress-free, personalized, and memorable journeys.
+            Real experiences from happy clients who've trusted ORAVIE Holidays
+            for stress-free, personalized journeys.
           </p>
         </div>
-        <div className={styles.navBtns}>
-          <button className={styles.navBtn} onClick={prev} aria-label="Previous">&#8592;</button>
-          <button className={styles.navBtn} onClick={next} aria-label="Next">&#8594;</button>
+
+        <div className="nav-btns">
+          <button className="nav-btn" onClick={prev}>←</button>
+          <button className="nav-btn" onClick={next}>→</button>
         </div>
       </div>
 
-      <div className={styles.viewport}>
-        <div className={styles.track} style={{ transform: `translateX(-${offset}%)` }}>
-          {TESTIMONIALS.map(t => (
-            <div key={t.id} className={styles.card} style={{ minWidth: `calc(${100 / vis}% - ${(vis - 1) * 24 / vis}px)` }}>
-              <div className={styles.stars}>{'★'.repeat(t.stars)}</div>
-              <p className={styles.quote}>"{t.quote}"</p>
-              <div className={styles.author}>
-                <div className={styles.avatar}>{t.initials}</div>
-                <div>
-                  <div className={styles.name}>{t.name}</div>
-                  <div className={styles.loc}>{t.location}</div>
-                </div>
+      <div className="card-wrapper">
+        {TESTIMONIALS.map((t, i) => (
+          <div
+            key={i}
+            className={`card ${i === current ? "active" : ""}`}
+          >
+            <div className="stars">{"★".repeat(t.stars)}</div>
+            <p className="quote">"{t.quote}"</p>
+
+            <div className="author">
+              <div className="avatar">{t.initials}</div>
+              <div>
+                <div className="name">{t.name}</div>
+                <div className="loc">{t.location}</div>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="dots">
+        {TESTIMONIALS.map((_, i) => (
+          <button
+            key={i}
+            className={`dot ${i === current ? "active" : ""}`}
+            onClick={() => setCurrent(i)}
+          />
+        ))}
       </div>
     </section>
   );
