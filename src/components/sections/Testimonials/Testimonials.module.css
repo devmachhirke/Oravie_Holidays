@@ -1,19 +1,37 @@
-.section { background: var(--cream-dark); overflow: hidden; padding: var(--section-pad); }
+/* ==========================================================
+   Testimonials.module.css
+   Infinite-loop slider — pair with Testimonials.jsx
+   ========================================================== */
 
+/* ── Section ─────────────────────────────────────────────── */
+.section {
+  background: var(--cream-dark);
+  overflow: hidden;
+  padding: var(--section-pad);
+}
+
+/* ── Header row ──────────────────────────────────────────── */
 .header {
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;        /* unchanged from original */
   justify-content: space-between;
   margin-bottom: 56px;
   flex-wrap: wrap;
   gap: 24px;
 }
 
-.navBtns { display: flex; gap: 8px; }
+/* ── Arrow buttons — position unchanged from original ─────── */
+.navBtns {
+  display: flex;
+  gap: 8px;
+  margin-top: 48px;
+  flex-shrink: 0;
+}
+
 .navBtn {
   width: 44px;
   height: 44px;
-  border: 1px solid rgba(184,134,11,0.3);
+  border: 1px solid rgba(184, 134, 11, 0.3);
   background: transparent;
   cursor: pointer;
   color: var(--text-muted);
@@ -23,29 +41,59 @@
   align-items: center;
   justify-content: center;
 }
+
 .navBtn:hover {
   border-color: var(--gold);
   color: var(--gold);
-  background: rgba(184,134,11,0.06);
+  background: rgba(184, 134, 11, 0.06);
 }
 
-.viewport { overflow: hidden; }
+/* ── Viewport ────────────────────────────────────────────── */
+.viewport {
+  overflow: hidden;               /* clips prepend & append clone zones */
+}
+
+/* ── Track ───────────────────────────────────────────────── */
+/*
+ * ⚠️  Keep transition duration in sync with ANIM constant in Testimonials.jsx
+ *     ANIM = 500  →  transition: transform 0.5s
+ */
 .track {
   display: flex;
-  gap: 24px;
-  transition: transform 0.5s ease;
+  gap: 24px;                      /* ⚠️  keep in sync with GAP = 24 in Testimonials.jsx */
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
 }
 
+/* ── Card ────────────────────────────────────────────────── */
+/*
+ * ⚠️  Do NOT set width or minWidth here.
+ *     JS sets exact pixel values inline so the last card is never clipped.
+ */
 .card {
   background: var(--warm-white);
-  border: 1px solid rgba(184,134,11,0.15);
+  border: 1px solid rgba(184, 134, 11, 0.15);
+  border-top: 2px solid var(--gold);
   padding: 40px 32px;
   flex-shrink: 0;
-  border-top: 2px solid var(--gold);
-  box-shadow: 0 4px 16px rgba(58,44,30,0.08);
+  box-shadow: 0 4px 16px rgba(58, 44, 30, 0.08);
+  transition: box-shadow 0.3s, transform 0.3s;
 }
 
-.stars { color: var(--gold); font-size: 13px; margin-bottom: 16px; letter-spacing: 2px; }
+.card:hover {
+  box-shadow: 0 8px 32px rgba(58, 44, 30, 0.14);
+  transform: translateY(-2px);
+}
+
+/* ── Stars ───────────────────────────────────────────────── */
+.stars {
+  color: var(--gold);
+  font-size: 13px;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+}
+
+/* ── Quote ───────────────────────────────────────────────── */
 .quote {
   font-family: var(--font-serif);
   font-size: 17px;
@@ -56,7 +104,13 @@
   font-style: italic;
 }
 
-.author { display: flex; align-items: center; gap: 16px; }
+/* ── Author ──────────────────────────────────────────────── */
+.author {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 .avatar {
   width: 44px;
   height: 44px;
@@ -70,5 +124,53 @@
   color: var(--white);
   flex-shrink: 0;
 }
-.name { font-size: 13px; font-weight: 600; color: var(--dark-warm); letter-spacing: 0.5px; }
-.loc { font-size: 11px; color: var(--gold); letter-spacing: 1px; margin-top: 2px; }
+
+.name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--dark-warm);
+  letter-spacing: 0.5px;
+}
+
+.loc {
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+/* ── Dots ────────────────────────────────────────────────── */
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 36px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(184, 134, 11, 0.25);
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.dotActive {
+  background: var(--gold);
+  transform: scale(1.4);
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .section { padding: 60px 32px; }
+  .header  { margin-bottom: 40px; }
+}
+
+@media (max-width: 600px) {
+  .section { padding: 48px 20px; }
+  .navBtns { margin-top: 32px; }
+  .card    { padding: 28px 20px; }
+  .quote   { font-size: 15px; }
+}
