@@ -86,7 +86,7 @@ function BookingWidget() {
         : formData.destination;
 
     try {
-      await fetch("https://script.google.com/macros/s/AKfycbxA2STTX471y_yKAQHjH2FrQse8Mlmz4_BK04ve-cQNYUjR7pc4vbppdQ-qYyhuuxyyEA/exec", {
+      await fetch("https://script.google.com/macros/s/AKfycbzLhKcYAd-HdPSUZ45gtfzJ0KnY8IHfVlFXsITNhu2Afq6tq8675Vft2GlOMoYASlXZRA/exec", {
         method: "POST",
         mode: "no-cors",
         headers: {

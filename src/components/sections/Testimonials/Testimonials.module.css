@@ -2,14 +2,19 @@
 
 .header {
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: space-between;
   margin-bottom: 56px;
   flex-wrap: wrap;
   gap: 24px;
 }
+.navBtns {
+  display: flex;
+  gap: 8px;
+  margin-top: 48px;             /* ← nudges buttons down past the badge */
+  align-self: flex-start;
+}
 
-.navBtns { display: flex; gap: 8px; }
 .navBtn {
   width: 44px;
   height: 44px;

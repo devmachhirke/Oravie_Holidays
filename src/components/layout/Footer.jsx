@@ -70,7 +70,7 @@ export function Footer() {
 
           </p>
           <p><a href="tel:+919322178463">+91 93221 78463</a></p>
-          <p><a href="mailto:oravieholidays@gmail.com">oravieholidays@gmail.com</a></p>
+          <p><a href="mailto:contact@oravieholidays.in">contact@oravieholidays.in</a></p>
           <div className={styles.socials}>
             {SOCIALS.map(s => (
               <a key={s.label} href={s.href} className={styles.socialLink} target="_blank" rel="noreferrer">
